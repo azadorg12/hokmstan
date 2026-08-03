@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>حکمستان</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="simorgh">
+        🦅
+    </div>
+
+    <h1>حکمستان</h1>
+
+    <p class="subtitle">
+        حکم، نسل جدید
+    </p>
+
+    <button onclick="startGame()">
+        شروع بازی
+    </button>
+
+
+    <div id="game" class="hidden">
+
+        <h2>میز حکم</h2>
+
+        <div class="table">
+
+            <div class="player top">
+                بازیکن حریف
+            </div>
+
+            <div class="player left">
+                یار شما
+            </div>
+
+
+            <div class="player right">
+                حریف
+            </div>
+
+
+            <div class="cards">
+                🂡 🂱 🃁 🃑
+            </div>
+
+
+            <div class="player bottom">
+                شما
+            </div>
+
+        </div>
+
+
+        <div class="score">
+            تیم شما: <span id="teamScore">0</span>
+            |
+            تیم حریف: <span id="enemyScore">0</span>
+        </div>
+
+
+        <button onclick="playRound()">
+            بازی کردن دست
+        </button>
+
+
+    </div>
+
+</div>
+
+
+<script src="game.js"></script>
+
+</body>
+</html>
