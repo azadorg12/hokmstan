@@ -3,81 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>حکمستان</title>
-
+<title>حکمستان | Hokmstan</title>
+<link href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="container">
+<div class="bg-pattern"></div>
+<div class="bg-glow"></div>
 
-    <div class="simorgh">
-        🦅
+<!-- SCREEN 1: LOGIN -->
+<section id="screen-login" class="screen active">
+  <div class="login-card">
+    <div class="logo-wrap">
+      <svg class="simorgh-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f6d365"/>
+            <stop offset="100%" stop-color="#c9930d"/>
+          </linearGradient>
+          <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#0f2b3d"/>
+            <stop offset="100%" stop-color="#08131f"/>
+          </radialGradient>
+        </defs>
+        <circle cx="100" cy="100" r="94" fill="url(#bgGrad)" stroke="url(#goldGrad)" stroke-width="3"/>
+        <g stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.35">
+          <line x1="100" y1="100" x2="100" y2="12"/>
+          <line x1="100" y1="100" x2="165" y2="35"/>
+          <line x1="100" y1="100" x2="188" y2="100"/>
+          <line x1="100" y1="100" x2="165" y2="165"/>
+          <line x1="100" y1="100" x2="100" y2="188"/>
+          <line x1="100" y1="100" x2="35" y2="165"/>
+          <line x1="100" y1="100" x2="12" y2="100"/>
+          <line x1="100" y1="100" x2="35" y2="35"/>
+        </g>
+        <path d="M100,55 C82,65 65,85 45,80 C63,95 82,92 92,108 C72,116 52,128 44,148 C72,142 90,128 100,138 C110,128 128,142 156,148 C148,128 128,116 108,108 C118,92 137,95 155,80 C135,85 118,65 100,55 Z" fill="url(#goldGrad)"/>
+        <circle cx="100" cy="72" r="6" fill="url(#bgGrad)" stroke="url(#goldGrad)" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <h1 class="game-title">حکمستان</h1>
+    <p class="game-subtitle">H O K M S T A N</p>
+    <p class="tagline">حکم ایرانی، نسل جدید</p>
+
+    <div class="login-buttons">
+      <button class="btn btn-primary" id="btn-guest">ورود مهمان</button>
+      <button class="btn btn-disabled" disabled>ورود با گوگل (به‌زودی)</button>
     </div>
 
-    <h1>حکمستان</h1>
+    <p class="version-tag">Hokmstan Demo v0.2</p>
+  </div>
+</section>
 
-    <p class="subtitle">
-        حکم، نسل جدید
-    </p>
-
-    <button onclick="startGame()">
-        شروع بازی
-    </button>
-
-
-    <div id="game" class="hidden">
-
-        <h2>میز حکم</h2>
-
-        <div class="table">
-
-            <div class="player top">
-                بازیکن حریف
-            </div>
-
-            <div class="player left">
-                یار شما
-            </div>
-
-
-            <div class="player right">
-                حریف
-            </div>
-
-
-            <div class="cards">
-                🂡 🂱 🃁 🃑
-            </div>
-
-
-            <div class="player bottom">
-                شما
-            </div>
-
-        </div>
-
-
-        <div class="score">
-            تیم شما: <span id="teamScore">0</span>
-            |
-            تیم حریف: <span id="enemyScore">0</span>
-        </div>
-
-
-        <button onclick="playRound()">
-            بازی کردن دست
-        </button>
-
-
+<!-- SCREEN 2: LOBBY -->
+<section id="screen-lobby" class="screen">
+  <div class="lobby-card">
+    <div class="lobby-header">
+      <div class="simorgh-mini">🦅</div>
+      <div class="player-info">
+        <h2 id="player-name">مهمان</h2>
+        <p class="player-level">جوجه سیمرغ • سطح ۱</p>
+      </div>
     </div>
 
-</div>
+    <h3 class="section-title">حالت بازی</h3>
+    <div class="mode-cards">
+      <div class="mode-card">
+        <h4>حکم کلاسیک+</h4>
+        <p>۴ نفره | ۲ در مقابل ۲</p>
+        <span class="badge">قدرت سیمرغ فعال</span>
+      </div>
+    </div>
 
+    <button class="btn btn-primary btn-large" id="btn-start-game">ورود به میز بازی</button>
+  </div>
+</section>
 
-<script src="game.js"></script>
+<!-- SCREEN 3: TABLE -->
+<section id="screen-table" class="screen">
+  <div class="table-wrap">
+    <div class="top-bar">
+      <button class="icon-btn" id="btn-exit-table">◀ خروج</button>
+      <div class="score-board">
+        <div class="score-team score-us">تیم ما: <span id="score-us">0</span></div>
+        <div class="score-team score-them">تیم حریف: <span id="score-them">0</span></div>
+      </div>
+      <button class="icon-btn simorgh-power-btn" id="btn-simorgh-power">قدرت سیمرغ 🦅</button>
+    </div>
 
+    <div class="carpet-table">
+      <div class="player-seat seat-top">
+        <div class="avatar">🧑</div>
+        <span class="p-name">آرش</span>
+        <span class="p-rank">سیمرغ جوان</span>
+      </div>
+      <div class="player-seat seat-right">
+        <div class="avatar">🧕</div>
+        <span class="p-name">سارا</span>
+        <span class="p-rank">جوجه سیمرغ</span>
+      </div>
+      <div class="player-seat seat-left">
+        <div class="avatar">🧔</div>
+        <span class="p-name">رضا</span>
+        <span class="p-rank">سیمرغ جنگجو</span>
+      </div>
+      <div class="player-seat seat-bottom">
+        <div class="avatar">😎</div>
+        <span class="p-name">شما</span>
+        <span class="p-rank">جوجه سیمرغ</span>
+      </div>
+
+      <div class="table-center" id="table-center"></div>
+    </div>
+
+    <div class="hand-cards" id="hand-cards"></div>
+  </div>
+</section>
+
+<script src="script.js"></script>
 </body>
 </html>
